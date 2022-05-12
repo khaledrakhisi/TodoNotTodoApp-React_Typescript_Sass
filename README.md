@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+## وَكَانَ فَضْلُ اللَّهِ عَلَيْكَ عَظِيمًا - 113 سورة النساء
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hobby
 
-## Available Scripts
+A simple well-designed react app using redux and typescript
 
-In the project directory, you can run:
+## Description
 
-### `yarn start`
+A simple well-designed react app using redux and typescript
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech Stack
 
-### `yarn test`
+<div align="center">
+<a href="https://reactjs.org/" title="React"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="64px" height="64px"></a>
+<a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="64px" height="64px"></a>
+<a href="https://git-scm.com/" title="Git"><img src="https://github.com/get-icon/geticon/raw/master/icons/git-icon.svg" alt="Git" width="64px" height="64px"></a>
+<a href="https://yarnpkg.com/" title="Yarn"><img src="https://github.com/get-icon/geticon/raw/master/icons/yarn.svg" alt="Yarn" width="64px" height="64px"></a>
+<a href="https://eslint.org/" title="ESLint"><img src="https://github.com/get-icon/geticon/raw/master/icons/eslint.svg" alt="ESLint" width="64px" height="64px"></a>
+<a href="https://prettier.io/" title="Prettier"><img src="https://github.com/get-icon/geticon/raw/master/icons/prettier.svg" alt="Prettier" width="64px" height="64px"></a>
+<a href="https://testing-library.com/docs/react-testing-library/intro/" title="React-Testing-Library"><img src="https://raw.githubusercontent.com/testing-library/react-testing-library/main/other/goat.png" alt="React-Testing-Library" width="64px" height="64px"></a>
+<a href="https://code.visualstudio.com/" title="Visual Studio Code"><img src="https://github.com/get-icon/geticon/raw/master/icons/visual-studio-code.svg" alt="Visual Studio Code" width="64px" height="64px"></a>
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview
 
-### `yarn build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Live Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+No live demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Demo photos
 
-### `yarn eject`
+![Demo snapshot #1](./public/demo1.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Styles and Design system
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Just SASS.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Installing Dependencies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm install
+```
 
-## Learn More
+```
+yarn
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Build & Run
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run build
+npm start
+```
+
+```
+yarn build
+yarn start
+```
+
+#### Tests
+
+- Unit/Integration Test
+  - Run `yarn test` to execute the unit tests.
+
+## Help
+
+In case of any issues please reach out to me at: info@khaledr.ir
+
+## Authors
+
+[Khaled Rakhisi](https://www.linkedin.com/in/khaledrakhisi/)
+
+## License
+
+This project is licensed under the [Khaled Rakhisi] License - see the LICENSE.md file for details
+
+## Acknowledgments
+
+Inspiration, code snippets, etc.
+
+- [awesome-readme](https://github.com/matiassingers/awesome-readme)
+- [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+- [dbader](https://github.com/dbader/readme-template)
+- [zenorocha](https://gist.github.com/zenorocha/4526327)
+- [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
