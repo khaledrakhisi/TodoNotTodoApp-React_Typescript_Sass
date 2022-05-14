@@ -7,4 +7,5 @@ export interface ITodo {
   id: string[10];
   name: string;
   status: ETodoStatus;
+  color: string;
 }

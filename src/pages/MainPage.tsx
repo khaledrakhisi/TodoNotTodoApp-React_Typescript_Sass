@@ -25,15 +25,18 @@ export const MainPage = () => {
                 ? todo.name.toLowerCase().includes(searchPhrase.toLowerCase())
                 : todo
             )
-            .map((todo) => (
-              <Note
-                key={todo.id}
-                id={todo.id}
-                name={todo.name}
-                status={todo.status}
-                onClickHandle={() => {}}
-              />
-            ))}
+            .map((todo) => {
+              return (
+                <Note
+                  key={todo.id}
+                  id={todo.id}
+                  name={todo.name}
+                  status={todo.status}
+                  onClickHandle={() => {}}
+                  color={todo.color}
+                />
+              );
+            })}
       </div>
     </section>
   );

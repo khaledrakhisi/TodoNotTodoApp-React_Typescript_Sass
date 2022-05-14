@@ -1,7 +1,7 @@
 @use "../scss/abstracts/" as *;
 
 .note {
-  background: #fff;
+  // background-color: var(--bgc);
   border-radius: 2px 2px 5px 5px;
   box-shadow: $secondBoxShadow;
   min-width: 210px;

@@ -19,6 +19,7 @@ export const Note: React.FunctionComponent<INoteProps> = ({
   id,
   name,
   status,
+  color,
   onClickHandle,
 }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         })
       );
     },
-    []
+    [dispatch, id]
   );
 
   return (
@@ -45,7 +46,10 @@ export const Note: React.FunctionComponent<INoteProps> = ({
       mountOnEnter
       unmountOnExit
     >
-      <section className={classes.note}>
+      <section
+        className={classes.note}
+        style={{ background: color || "var(--bgc)" }}
+      >
         {/* <Draggable handle="#note__header"> */}
         <div id={classes["note__header"]}>
           <Checkbox

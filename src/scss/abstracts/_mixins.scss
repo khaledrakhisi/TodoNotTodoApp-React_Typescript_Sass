@@ -34,6 +34,10 @@
   border-top: 1px solid #848484;
 }
 
+@function randomColorRGB($max) {
+  @return rgb(random($max), random($max), random($max));
+}
+
 @mixin mobile {
   @media only screen and (max-width: $mobile-width) {
     @content;
