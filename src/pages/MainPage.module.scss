@@ -1,0 +1,12 @@
+@use "../scss/abstracts/" as *;
+
+.mainPage {
+  height: 450px;
+  padding: $largeSpacing;
+
+  .notes {
+    padding: $largeSpacing;
+    @include flex(row, flex-start);
+    flex-wrap: wrap;
+  }
+}

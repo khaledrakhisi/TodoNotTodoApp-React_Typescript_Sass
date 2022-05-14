@@ -15,7 +15,7 @@ $fontSizeTableStatus: 9px; //line-height:16px; letter-spacing:0.4%;
 
 /* ****Shadows**** */
 $mainBoxShadow: 0 6px 30px 5px rgba(0, 0, 0, 0.12);
-$secondBoxShadow: -3px 6px 30px 5px rgba(0, 0, 0, 0.3);
+$secondBoxShadow: 0 2px 5px #000000;
 
 /* ****Border radius**** */
 $smallBorderRadius: 8px; //for buttons
@@ -47,3 +47,5 @@ $mediumSpacing: 12px;
 $largeSpacing: 24px;
 
 $backdropTrasitionSpeed: 400ms;
+$mainHeaderSize: 100px;
+$mainFooterSize: 100px;

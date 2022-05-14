@@ -1,0 +1,47 @@
+@use "../../scss/abstracts/" as *;
+
+.container {
+  position: fixed;
+  width: 40%;
+  height: 200px;
+  overflow: hidden;
+  // Centering
+  inset: 0;
+  margin: auto;
+  // Centering
+  @include flex(column, flex-start);
+  background-color: $secondaryColor;
+  border: $formBorder;
+  box-shadow: $secondBoxShadow;
+
+  & > .titlebar {
+    @include flex();
+    width: 100%;
+    background: $bg;
+    color: $text-color-selected;
+    text-align: center;
+    padding: $smallSpacing;
+
+    // close button
+    & > :last-child {
+      margin-left: auto;
+    }
+  }
+
+  & > .message {
+    width: 100%;
+    padding: $largeSpacing;
+    font-weight: bold;
+  }
+
+  & > .buttons {
+    @include flex(row, flex-end);
+    margin-top: auto;
+    padding: $mediumSpacing;
+    width: 100%;
+
+    & > :last-child {
+      margin-left: $smallSpacing;
+    }
+  }
+}

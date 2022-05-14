@@ -1,0 +1,19 @@
+@use "../scss/abstracts/" as *;
+
+.checkbox {
+  margin-top: auto;
+  padding: $smallSpacing;
+  @include flex(row, center, flex-start);
+
+  input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  label {
+    margin: 0 0.5rem;
+  }
+}

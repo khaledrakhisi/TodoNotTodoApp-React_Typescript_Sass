@@ -1,66 +1,56 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { fetchAllUsers } from "../apis/api";
-import { IUser } from "../interfaces/userInterface";
+import { ETodoStatus, ITodo } from "../interfaces/ITodo";
+import { generateKey } from "../utils/utils";
 
 import { RootState } from "./store";
 
-interface IUsersSliceState {
-  users: Array<IUser>;
-  activated: IUser | null;
-  isUserLoading: boolean;
+interface ITodoSliceState {
+  todos: Array<ITodo>;
+  isLoading: boolean;
   error?: string;
 }
 
-const initialState: IUsersSliceState = {
-  users: [],
-  isUserLoading: false,
-  activated: null,
+const initialState: ITodoSliceState = {
+  todos: [],
+  isLoading: false,
 };
 
-export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
-  const response = await fetchAllUsers();
-  return response.data;
-});
-
-export const usersSlice = createSlice({
-  name: "users",
+export const todosSlice = createSlice({
+  name: "todos",
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<string>) => {
-      state.users = [
-        ...state.users,
+    addTodo: (state, action: PayloadAction<string>) => {
+      state.todos = [
+        ...state.todos,
         {
-          id: state.users.length.toString(),
+          id: generateKey("note_"),
           name: action.payload,
+          status: ETodoStatus.notDone,
         },
       ];
     },
-    removeUser: (state, action: PayloadAction<string>) => {
-      state.users = state.users.filter((user) => user.id !== action.payload);
+    deleteTodo: (state, action: PayloadAction<string>) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
-    activateUser: (state, action: PayloadAction<IUser | null>) => {
-      state.activated = action.payload;
+    changeStatus: (
+      state,
+      action: PayloadAction<{ id: string; newStatus: ETodoStatus }>
+    ) => {
+      state.todos = state.todos.map((todo) =>
+        todo.id === action.payload.id
+          ? {
+              ...todo,
+              status: action.payload.newStatus,
+            }
+          : todo
+      );
     },
-  },
-  extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(getAllUsers.pending, (state: IUsersSliceState) => {
-      state.isUserLoading = true;
-    });
-    builder.addCase(
-      getAllUsers.fulfilled,
-      (state: IUsersSliceState, action) => {
-        // Add user to the state array
-        state.isUserLoading = false;
-        state.users = action.payload!;
-      }
-    );
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addUser, removeUser, activateUser } = usersSlice.actions;
+export const { addTodo, deleteTodo, changeStatus } = todosSlice.actions;
 
-export const selectUsers = (state: RootState) => state.users;
-export const selectActivatedUser = (state: RootState) => state.users.activated;
+export const selectTodos = (state: RootState) => state.todos;
+// export const selectActivatedUser = (state: RootState) => state.users.activated;

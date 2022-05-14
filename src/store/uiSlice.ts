@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { ITodoName } from "../interfaces/ITodoName";
 
 import { RootState } from "./store";
 
 export interface IInputs {
-  userName: string;
-  passion: string;
-  hobbyName: string;
-  year: string;
+  todoTitle: string;
+  searchPhrase: string;
 }
 
 export enum EMessageboxResult {
@@ -28,14 +28,15 @@ export interface IMessageBoxOptions {
 interface IUiSliceState {
   inputs: IInputs;
   messagebox: IMessageBoxOptions;
+  isCreateAreaExpanded: boolean;
+  isLoading: boolean;
+  error?: string;
 }
 
 const initialState: IUiSliceState = {
   inputs: {
-    userName: "",
-    passion: "",
-    hobbyName: "",
-    year: "2007",
+    todoTitle: "",
+    searchPhrase: "",
   },
   messagebox: {
     visible: false,
@@ -46,7 +47,17 @@ const initialState: IUiSliceState = {
     hasCancelButton: false,
     result: EMessageboxResult.CLOSE,
   },
+  isCreateAreaExpanded: false,
+  isLoading: false,
 };
+
+export const getTodoRandomName = createAsyncThunk<ITodoName>(
+  "todos/getTodoRandomName",
+  async () => {
+    const response = await fetch("https://www.boredapi.com/api/activity");
+    return await response.json();
+  }
+);
 
 export const uiSlice = createSlice({
   name: "ui",
@@ -67,11 +78,44 @@ export const uiSlice = createSlice({
     showMessageBox: (state, action: PayloadAction<IMessageBoxOptions>) => {
       state.messagebox = action.payload;
     },
+    setCreateAreaExpandState: (state, action: PayloadAction<boolean>) => {
+      state.isCreateAreaExpanded = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(getTodoRandomName.pending, (state: IUiSliceState) => {
+      state.isLoading = true;
+    });
+    builder.addCase(
+      getTodoRandomName.fulfilled,
+      (state: IUiSliceState, action) => {
+        // Add user to the state array
+        state.isLoading = false;
+        state.inputs.todoTitle = action.payload.activity;
+      }
+    );
+    // When a server responses with an error:
+    builder.addCase(getTodoRandomName.rejected, (state, { payload }) => {
+      // We show the error message
+      // and change `status` back to `idle` again.
+      state.isLoading = false;
+      if (payload) {
+        state.error = (payload as Error).message;
+      }
+    });
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setInput, showMessageBox, emptyInputs } = uiSlice.actions;
+export const {
+  setInput,
+  showMessageBox,
+  emptyInputs,
+  setCreateAreaExpandState,
+} = uiSlice.actions;
 
-export const selectInputs = (state: RootState) => state.ui;
+export const selectInputs = (state: RootState) => state.ui.inputs;
 export const selectMessagebox = (state: RootState) => state.ui.messagebox;
+export const selectCreateAreaExpandStatus = (state: RootState) =>
+  state.ui.isCreateAreaExpanded;

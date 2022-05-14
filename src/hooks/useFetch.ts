@@ -1,7 +1,5 @@
 import { useReducer } from "react";
 
-import { fake_fetch } from "../apis/api";
-
 interface State<T> {
   data?: T;
   error?: Error;
@@ -42,12 +40,10 @@ function useFetch<T = unknown>(): State<T> {
 
     try {
       // const response = await fetch(url, options);
-      const response = await fake_fetch(url, method);
-
+      // const response = await fake_fetch(url, method);
       // const data = (await response.json()) as T;
-      const data = response;
-
-      dispatch({ type: "fetched", payload: data as any });
+      // const data = response;
+      // dispatch({ type: "fetched", payload: data as any });
     } catch (error) {
       dispatch({ type: "error", payload: error as Error });
     }

@@ -1,0 +1,38 @@
+@use "../scss/abstracts/" as *;
+
+.searchBox {
+  @include flex(row, center, center);
+
+  border: 1.5px solid var(--text-color);
+  border-radius: 100vw;
+  padding: 0.2rem 0.5rem;
+  margin-left: 2rem;
+
+  & > :first-child {
+    fill: var(--text-color);
+  }
+
+  @media screen and (max-width: 975px) {
+    margin-left: 0;
+  }
+  &_input {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    margin-left: 0.5rem;
+    padding: 0.3rem;
+
+    flex: 1;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px var(--card-bgc) inset !important;
+      box-shadow: 0 0 0 30px var(--card-bgc) inset !important;
+    }
+  }
+  @media screen and (max-width: 950px) {
+    margin-left: 0;
+  }
+}
