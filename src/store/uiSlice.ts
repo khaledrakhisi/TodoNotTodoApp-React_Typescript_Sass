@@ -7,6 +7,8 @@ import { RootState } from "./store";
 export interface IInputs {
   todoTitle: string;
   searchPhrase: string;
+  isLoading: boolean;
+  error?: string;
 }
 
 export enum EMessageboxResult {
@@ -29,14 +31,13 @@ interface IUiSliceState {
   inputs: IInputs;
   messagebox: IMessageBoxOptions;
   isCreateAreaExpanded: boolean;
-  isLoading: boolean;
-  error?: string;
 }
 
 const initialState: IUiSliceState = {
   inputs: {
     todoTitle: "",
     searchPhrase: "",
+    isLoading: false,
   },
   messagebox: {
     visible: false,
@@ -48,7 +49,6 @@ const initialState: IUiSliceState = {
     result: EMessageboxResult.CLOSE,
   },
   isCreateAreaExpanded: false,
-  isLoading: false,
 };
 
 export const getTodoRandomName = createAsyncThunk<ITodoName>(
@@ -85,13 +85,13 @@ export const uiSlice = createSlice({
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(getTodoRandomName.pending, (state: IUiSliceState) => {
-      state.isLoading = true;
+      state.inputs.isLoading = true;
     });
     builder.addCase(
       getTodoRandomName.fulfilled,
       (state: IUiSliceState, action) => {
         // Add user to the state array
-        state.isLoading = false;
+        state.inputs.isLoading = false;
         state.inputs.todoTitle = action.payload.activity;
       }
     );
@@ -99,9 +99,9 @@ export const uiSlice = createSlice({
     builder.addCase(getTodoRandomName.rejected, (state, { payload }) => {
       // We show the error message
       // and change `status` back to `idle` again.
-      state.isLoading = false;
+      state.inputs.isLoading = false;
       if (payload) {
-        state.error = (payload as Error).message;
+        state.inputs.error = (payload as Error).message;
       }
     });
   },

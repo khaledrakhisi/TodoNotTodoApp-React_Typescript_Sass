@@ -12,7 +12,13 @@ interface ITodoSliceState {
 }
 
 const initialState: ITodoSliceState = {
-  todos: [],
+  todos: [
+    {
+      id: "_1000",
+      name: "Create Todo List",
+      status: ETodoStatus.done,
+    },
+  ],
   isLoading: false,
 };
 

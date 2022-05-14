@@ -12,8 +12,9 @@
     height: 46px;
     margin: 1px;
     border-radius: 50%;
-    border: 5px solid $primaryColor;
-    border-color: $primaryColor transparent $primaryColor transparent;
+    border: 5px solid var(--primaryColor);
+    border-color: var(--primaryColor) transparent var(--primaryColor)
+      transparent;
     @include animate(rotating, 1s, linear, infinite);
   }
 }

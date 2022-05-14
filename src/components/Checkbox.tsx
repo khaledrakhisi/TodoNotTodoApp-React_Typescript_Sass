@@ -2,10 +2,23 @@ import React from "react";
 
 import classes from "./Checkbox.module.scss";
 
-export const Checkbox = () => {
+interface ICheckboxProps {
+  checked?: boolean;
+  onChangeHandle?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Checkbox: React.FunctionComponent<ICheckboxProps> = ({
+  checked,
+  onChangeHandle,
+}) => {
   return (
     <section className={classes.checkbox}>
-      <input type="checkbox" id="status" />
+      <input
+        defaultChecked={checked}
+        type="checkbox"
+        id="status"
+        onChange={(e) => onChangeHandle?.(e)}
+      />
       <label htmlFor="status">{"Done"}</label>
     </section>
   );

@@ -5,7 +5,7 @@
   padding: $smallSpacing;
   @include flex(row, center, flex-start);
 
-  input {
+  & > input {
     display: inline-block;
     width: 20px;
     height: 20px;

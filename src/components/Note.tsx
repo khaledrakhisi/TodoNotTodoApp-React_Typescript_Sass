@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Draggable from "react-draggable";
 import { useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
-import { ReactComponent as PaperIcon } from "../assets/images/paper.svg";
-import { ITodo } from "../interfaces/ITodo";
-import { deleteTodo } from "../store/TodosSlice";
+import { ETodoStatus, ITodo } from "../interfaces/ITodo";
+import { changeStatus, deleteTodo } from "../store/TodosSlice";
 
 import { Checkbox } from "./Checkbox";
 import { CloseButton } from "./CloseButton";
@@ -23,6 +22,21 @@ export const Note: React.FunctionComponent<INoteProps> = ({
   onClickHandle,
 }) => {
   const dispatch = useDispatch();
+
+  const statusChangedHandler = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(
+        changeStatus({
+          id,
+          newStatus: e.currentTarget.checked
+            ? ETodoStatus.done
+            : ETodoStatus.notDone,
+        })
+      );
+    },
+    []
+  );
+
   return (
     <CSSTransition
       in={true}
@@ -34,11 +48,15 @@ export const Note: React.FunctionComponent<INoteProps> = ({
       <section className={classes.note}>
         {/* <Draggable handle="#note__header"> */}
         <div id={classes["note__header"]}>
+          <Checkbox
+            onChangeHandle={statusChangedHandler}
+            checked={status === ETodoStatus.done ? true : false}
+          />
           <CloseButton onClickHandle={() => dispatch(deleteTodo(id))} />
         </div>
-        {/* <div className={classes.header} /> */}
-        <p>{name}</p>
-        <Checkbox />
+        <p className={`${status === ETodoStatus.done ? classes.done : null}`}>
+          {name}
+        </p>
         {/* </Draggable> */}
       </section>
     </CSSTransition>

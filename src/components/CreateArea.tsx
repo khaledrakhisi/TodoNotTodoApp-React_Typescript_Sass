@@ -17,7 +17,7 @@ import classes from "./CreateArea.module.scss";
 
 export const CreateArea = () => {
   const isCreateAreaExpanded = useSelector(selectCreateAreaExpandStatus);
-  const { todoTitle } = useSelector(selectInputs);
+  const { todoTitle, isLoading } = useSelector(selectInputs);
   const dispatch = useDispatch<AppDispatch>();
 
   const inputChangeHandle = useCallback(
@@ -67,7 +67,7 @@ export const CreateArea = () => {
       }`}
       onSubmit={formSubmitHandle}
     >
-      {/* {isLoading && <LoadingSpinner asOverlay />} */}
+      {isLoading && <LoadingSpinner asOverlay />}
 
       <input
         name="todoTitle"
@@ -84,6 +84,7 @@ export const CreateArea = () => {
       <button
         type="submit"
         className={`${isCreateAreaExpanded && classes.expanded}`}
+        disabled={todoTitle ? false : true}
       >
         +
       </button>

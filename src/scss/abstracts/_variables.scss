@@ -1,17 +1,18 @@
 /* ****Fonts**** */
 
 //Body size
-$fontSizeBodySmall: 12px; //line-height:16px; letter-spacing:0.4%;
-$fontSizeBodyMedium: 14px; //line-height:20px; letter-spacing:0.25%;
-$fontSizeBodyLarge: 16px; //line-height:24px; letter-spacing:0.15%;
+$fontSizeBodySmall: 12px;
+$fontSizeBodyMedium: 14px;
+$fontSizeBodyLarge: 16px;
+$fontSizeBodyExtraLarge: 32px;
 //Headline size
-$fontSizeHeadlineSmall: 24px; //line-height:32px; letter-spacing:0;
-$fontSizeHeadlineMedium: 45px; //lineHeight:36px; letter-spacing:0;
-$fontSizeHeadlineLarge: 57px; //line-height:40px letter-spacing:0;
+$fontSizeHeadlineSmall: 24px;
+$fontSizeHeadlineMedium: 45px;
+$fontSizeHeadlineLarge: 57px;
 //Display size
-$fontSizeDisplaySmall: 64px; //line-height:44px; letter-spacing:0;
+$fontSizeDisplaySmall: 64px;
 //helper font size
-$fontSizeTableStatus: 9px; //line-height:16px; letter-spacing:0.4%;
+$fontSizeTableStatus: 9px;
 
 /* ****Shadows**** */
 $mainBoxShadow: 0 6px 30px 5px rgba(0, 0, 0, 0.12);
