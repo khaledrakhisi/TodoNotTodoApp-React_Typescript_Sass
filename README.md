@@ -1,6 +1,6 @@
 ## وَكَانَ فَضْلُ اللَّهِ عَلَيْكَ عَظِيمًا - 113 سورة النساء
 
-# Hobby
+# Todo & Not-Todo
 
 A simple well-designed react app using redux and typescript
 
@@ -35,6 +35,7 @@ No live demo
 ### Demo photos
 
 ![Demo snapshot #1](./public/demo1.png)
+![Demo snapshot #1](./public/demo2.png)
 
 ## Styles and Design system
 
