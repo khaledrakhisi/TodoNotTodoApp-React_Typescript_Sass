@@ -51,7 +51,10 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         style={{ background: color || "var(--bgc)" }}
       >
         {/* <Draggable handle="#note__header"> */}
-        <div id={classes["note__header"]}>
+        <div
+          id={classes["note__header"]}
+          style={{ backgroundColor: `darken(${color}, 5)` || "var(--bgc)" }}
+        >
           <Checkbox
             onChangeHandle={statusChangedHandler}
             checked={status === ETodoStatus.done ? true : false}

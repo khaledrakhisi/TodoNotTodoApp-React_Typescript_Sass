@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { ETodoStatus, ITodo } from "../interfaces/ITodo";
-import {
-  generateKey,
-  generateRandomColor,
-  generateRandomLightColor,
-} from "../utils/utils";
+import { generateKey, generateLightColorHex } from "../utils/utils";
 
 import { RootState } from "./store";
 
@@ -19,7 +15,7 @@ const initialState: ITodoSliceState = {
   todos: [
     {
       id: "_1000",
-      name: "Create Todo List",
+      name: "Create todo list",
       status: ETodoStatus.done,
       color: "#8e8e8e",
     },
@@ -38,7 +34,7 @@ export const todosSlice = createSlice({
           id: generateKey("note_"),
           name: action.payload,
           status: ETodoStatus.notDone,
-          color: generateRandomLightColor(),
+          color: generateLightColorHex(),
         },
       ];
     },

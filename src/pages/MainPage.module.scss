@@ -6,7 +6,11 @@
 
   .notes {
     padding: $largeSpacing;
-    @include flex(row, flex-start);
     flex-wrap: wrap;
+    @include flex(row);
+
+    @include tablet {
+      @include flex(row, flex-start);
+    }
   }
 }

@@ -89,7 +89,7 @@ body {
   line-height: 1.5em;
   overflow-x: hidden;
 
-  @include tablet {
+  @include mobile {
     background-color: var(--secondaryColor);
   }
 }
