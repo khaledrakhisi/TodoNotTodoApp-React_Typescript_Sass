@@ -39,7 +39,7 @@ No live demo
 
 ## Styles and Design system
 
-Just SASS.
+Just SASS (Mobile-First Approach).
 
 ### Installing Dependencies
 
