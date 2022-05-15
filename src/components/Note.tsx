@@ -43,7 +43,7 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         hasCloseButton: false,
         hasOkButton: true,
         message: `Are you sure for deleting '${todo.name}' ?`,
-        title: "Deleting Note!",
+        title: "Deleting Todo!",
         visible: true,
         result: EMessageboxResult.CANCEL,
       })
