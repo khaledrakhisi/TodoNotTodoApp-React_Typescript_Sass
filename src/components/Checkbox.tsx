@@ -19,7 +19,7 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps> = ({
         id="status"
         onChange={(e) => onChangeHandle?.(e)}
       />
-      <label htmlFor="status">{"Done"}</label>
+      <label>{"Done"}</label>
     </section>
   );
 };

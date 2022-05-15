@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { CSSTransition } from "react-transition-group";
 
 import { ETodoStatus, ITodo } from "../interfaces/ITodo";
 import { changeStatus, setSelectedTodo } from "../store/TodosSlice";
@@ -52,35 +51,25 @@ export const Note: React.FunctionComponent<INoteProps> = ({
   }, [dispatch, todo]);
 
   return (
-    <CSSTransition
-      in={true}
-      timeout={200}
-      classNames="popup"
-      mountOnEnter
-      unmountOnExit
+    <section
+      className={classes.note}
+      style={{ background: todo.color || "var(--bgc)" }}
     >
-      <section
-        className={classes.note}
-        style={{ background: todo.color || "var(--bgc)" }}
+      <div
+        id={classes["note__header"]}
+        style={{ backgroundColor: todo.color || "var(--bgc)" }}
       >
-        <div
-          id={classes["note__header"]}
-          style={{ backgroundColor: todo.color || "var(--bgc)" }}
-        >
-          <Checkbox
-            onChangeHandle={statusChangedHandler}
-            checked={todo.status === ETodoStatus.done ? true : false}
-          />
-          <CloseButton onClickHandle={deleteItemHandle} />
-        </div>
-        <p
-          className={`${
-            todo.status === ETodoStatus.done ? classes.done : null
-          }`}
-        >
-          {todo.name}
-        </p>
-      </section>
-    </CSSTransition>
+        <Checkbox
+          onChangeHandle={statusChangedHandler}
+          checked={todo.status === ETodoStatus.done ? true : false}
+        />
+        <CloseButton onClickHandle={deleteItemHandle} />
+      </div>
+      <p
+        className={`${todo.status === ETodoStatus.done ? classes.done : null}`}
+      >
+        {todo.name}
+      </p>
+    </section>
   );
 };
