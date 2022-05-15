@@ -32,11 +32,11 @@ A simple well-designed react app using redux and typescript
 
 No live demo
 
-### Demo photos
+### Demo Screenshots
 
-![Demo snapshot #1](./public/demo1.png)
-![Demo snapshot #2](./public/demo3.png)
-![Demo snapshot #3](./public/demo2.png)
+![Demo screenshot #1](./public/demo1.png)
+![Demo screenshot #2](./public/demo3.png)
+![Demo screenshot #3](./public/demo2.png)
 
 ## Styles and Design system
 
