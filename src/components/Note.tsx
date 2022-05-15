@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import Draggable from "react-draggable";
 import { useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
@@ -12,15 +11,13 @@ import { CloseButton } from "./CloseButton";
 
 import classes from "./Note.module.scss";
 
-interface INoteProps extends ITodo {
+interface INoteProps {
+  todo: ITodo;
   onClickHandle: (id: string) => void;
 }
 
 export const Note: React.FunctionComponent<INoteProps> = ({
-  id,
-  name,
-  status,
-  color,
+  todo,
   onClickHandle,
 }) => {
   const dispatch = useDispatch();
@@ -29,30 +26,30 @@ export const Note: React.FunctionComponent<INoteProps> = ({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(
         changeStatus({
-          id,
+          id: todo.id,
           newStatus: e.currentTarget.checked
             ? ETodoStatus.done
             : ETodoStatus.notDone,
         })
       );
     },
-    [dispatch, id]
+    [dispatch, todo]
   );
 
   const deleteItemHandle = useCallback(() => {
-    dispatch(setSelectedTodo({ id, name, status, color }));
+    dispatch(setSelectedTodo(todo));
     dispatch(
       showMessageBox({
         hasCancelButton: true,
         hasCloseButton: false,
         hasOkButton: true,
-        message: `Are you sure for deleting '${name}' ?`,
+        message: `Are you sure for deleting '${todo.name}' ?`,
         title: "Deleting Note!",
         visible: true,
         result: EMessageboxResult.CANCEL,
       })
     );
-  }, [dispatch, name]);
+  }, [dispatch, todo]);
 
   return (
     <CSSTransition
@@ -64,20 +61,24 @@ export const Note: React.FunctionComponent<INoteProps> = ({
     >
       <section
         className={classes.note}
-        style={{ background: color || "var(--bgc)" }}
+        style={{ background: todo.color || "var(--bgc)" }}
       >
         <div
           id={classes["note__header"]}
-          style={{ backgroundColor: color || "var(--bgc)" }}
+          style={{ backgroundColor: todo.color || "var(--bgc)" }}
         >
           <Checkbox
             onChangeHandle={statusChangedHandler}
-            checked={status === ETodoStatus.done ? true : false}
+            checked={todo.status === ETodoStatus.done ? true : false}
           />
           <CloseButton onClickHandle={deleteItemHandle} />
         </div>
-        <p className={`${status === ETodoStatus.done ? classes.done : null}`}>
-          {name}
+        <p
+          className={`${
+            todo.status === ETodoStatus.done ? classes.done : null
+          }`}
+        >
+          {todo.name}
         </p>
       </section>
     </CSSTransition>

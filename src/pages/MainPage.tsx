@@ -64,14 +64,7 @@ export const MainPage = () => {
             )
             .map((todo) => {
               return (
-                <Note
-                  key={todo.id}
-                  id={todo.id}
-                  name={todo.name}
-                  status={todo.status}
-                  onClickHandle={() => {}}
-                  color={todo.color}
-                />
+                <Note key={todo.id} todo={todo} onClickHandle={() => {}} />
               );
             })}
       </div>
