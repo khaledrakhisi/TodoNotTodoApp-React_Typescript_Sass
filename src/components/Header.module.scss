@@ -5,7 +5,7 @@
   position: fixed;
   inset: 0;
   width: 100%;
-  height: $mainHeaderSize;
+  max-height: $mainHeaderSize;
   padding: $mediumSpacing $largeSpacing;
   background-color: var(--bgc);
   color: var(--text-color);

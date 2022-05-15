@@ -35,7 +35,8 @@ No live demo
 ### Demo photos
 
 ![Demo snapshot #1](./public/demo1.png)
-![Demo snapshot #1](./public/demo2.png)
+![Demo snapshot #2](./public/demo3.png)
+![Demo snapshot #3](./public/demo2.png)
 
 ## Styles and Design system
 

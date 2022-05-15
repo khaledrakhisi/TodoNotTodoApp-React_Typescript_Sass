@@ -73,12 +73,6 @@ select {
   color: #b9b9b9;
 }
 
-input[type=file], /* FF, IE7+, chrome (except button) */
-input[type=file]::-webkit-file-upload-button {
-  /* chromes and blink button */
-  cursor: pointer;
-}
-
 //general styles
 body {
   padding-top: $mainHeaderSize;
@@ -98,7 +92,6 @@ body {
   font-size: $fontSizeHeadlineSmall;
   font-weight: 700;
   line-height: 2em;
-  margin-bottom: $mediumSpacing;
 }
 
 .subTitle {
