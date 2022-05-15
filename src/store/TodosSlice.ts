@@ -7,6 +7,7 @@ import { RootState } from "./store";
 
 interface ITodoSliceState {
   todos: Array<ITodo>;
+  selectedTodo: ITodo | null;
   isLoading: boolean;
   error?: string;
 }
@@ -21,6 +22,7 @@ const initialState: ITodoSliceState = {
     },
   ],
   isLoading: false,
+  selectedTodo: null,
 };
 
 export const todosSlice = createSlice({
@@ -41,6 +43,9 @@ export const todosSlice = createSlice({
     deleteTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
+    setSelectedTodo: (state, action: PayloadAction<ITodo>) => {
+      state.selectedTodo = action.payload;
+    },
     changeStatus: (
       state,
       action: PayloadAction<{ id: string; newStatus: ETodoStatus }>
@@ -58,7 +63,8 @@ export const todosSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addTodo, deleteTodo, changeStatus } = todosSlice.actions;
+export const { addTodo, deleteTodo, changeStatus, setSelectedTodo } =
+  todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 // export const selectActivatedUser = (state: RootState) => state.users.activated;

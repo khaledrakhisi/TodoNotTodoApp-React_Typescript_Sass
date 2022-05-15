@@ -45,7 +45,7 @@ export const Messagebox = () => {
     <CSSTransition
       in={visible}
       timeout={200}
-      classNames="slide-in-left"
+      classNames="fade"
       mountOnEnter
       unmountOnExit
     >

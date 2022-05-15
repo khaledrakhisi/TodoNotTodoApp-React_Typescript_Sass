@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 import { ETodoStatus, ITodo } from "../interfaces/ITodo";
-import { changeStatus, deleteTodo } from "../store/TodosSlice";
+import { changeStatus, deleteTodo, setSelectedTodo } from "../store/TodosSlice";
+import { EMessageboxResult, showMessageBox } from "../store/uiSlice";
 
 import { Checkbox } from "./Checkbox";
 import { CloseButton } from "./CloseButton";
@@ -38,6 +39,21 @@ export const Note: React.FunctionComponent<INoteProps> = ({
     [dispatch, id]
   );
 
+  const deleteItemHandle = useCallback(() => {
+    dispatch(setSelectedTodo({ id, name, status, color }));
+    dispatch(
+      showMessageBox({
+        hasCancelButton: true,
+        hasCloseButton: false,
+        hasOkButton: true,
+        message: `Are you sure for deleting '${name}' ?`,
+        title: "Deleting Note!",
+        visible: true,
+        result: EMessageboxResult.CANCEL,
+      })
+    );
+  }, [dispatch, name]);
+
   return (
     <CSSTransition
       in={true}
@@ -53,13 +69,13 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         {/* <Draggable handle="#note__header"> */}
         <div
           id={classes["note__header"]}
-          style={{ backgroundColor: `darken(${color}, 5)` || "var(--bgc)" }}
+          style={{ backgroundColor: color || "var(--bgc)" }}
         >
           <Checkbox
             onChangeHandle={statusChangedHandler}
             checked={status === ETodoStatus.done ? true : false}
           />
-          <CloseButton onClickHandle={() => dispatch(deleteTodo(id))} />
+          <CloseButton onClickHandle={deleteItemHandle} />
         </div>
         <p className={`${status === ETodoStatus.done ? classes.done : null}`}>
           {name}

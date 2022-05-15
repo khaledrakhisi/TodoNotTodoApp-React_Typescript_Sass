@@ -1,24 +1,25 @@
-@use "../../scss/abstracts/" as *;
+@use "../scss/abstracts/" as *;
 
 .container {
   position: fixed;
-  width: 40%;
-  height: 200px;
+  width: 80%;
+  height: 220px;
   overflow: hidden;
   // Centering
   inset: 0;
   margin: auto;
   // Centering
   @include flex(column, flex-start);
-  background-color: $secondaryColor;
-  border: $formBorder;
+  background-color: var(--secondaryColor);
+  // border: $formBorder;
   box-shadow: $secondBoxShadow;
+  z-index: 10;
 
   & > .titlebar {
     @include flex();
     width: 100%;
-    background: $bg;
-    color: $text-color-selected;
+    background: var(--bgc);
+    color: var(--text-color);
     text-align: center;
     padding: $smallSpacing;
 
@@ -43,5 +44,9 @@
     & > :last-child {
       margin-left: $smallSpacing;
     }
+  }
+
+  @include tablet {
+    width: 40%;
   }
 }
