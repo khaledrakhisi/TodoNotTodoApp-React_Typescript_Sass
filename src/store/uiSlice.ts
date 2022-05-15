@@ -54,7 +54,7 @@ const initialState: IUiSliceState = {
 export const getTodoRandomName = createAsyncThunk<ITodoName>(
   "todos/getTodoRandomName",
   async () => {
-    const response = await fetch("https://www.boredapi.com/api/activity");
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL!);
     return await response.json();
   }
 );

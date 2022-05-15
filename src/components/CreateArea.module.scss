@@ -46,15 +46,15 @@
   }
 
   & > button[type="button"] {
-    right: 60px;
-  }
-
-  & > button[type="submit"] {
     display: none;
-    right: 18px;
+    right: 60px;
     &.expanded {
       display: block;
     }
+  }
+
+  & > button[type="submit"] {
+    right: 18px;
   }
 
   @include tablet {

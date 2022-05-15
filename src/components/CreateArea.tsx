@@ -78,14 +78,14 @@ export const CreateArea = () => {
         onClick={() => dispatch(setCreateAreaExpandState(true))}
       />
 
-      <button type="button" onClick={randomTitleButtonCLickHandler}>
+      <button
+        type="button"
+        onClick={randomTitleButtonCLickHandler}
+        className={`${isCreateAreaExpanded && classes.expanded}`}
+      >
         ?
       </button>
-      <button
-        type="submit"
-        className={`${isCreateAreaExpanded && classes.expanded}`}
-        disabled={todoTitle ? false : true}
-      >
+      <button type="submit" disabled={todoTitle ? false : true}>
         +
       </button>
     </form>
