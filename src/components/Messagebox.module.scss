@@ -11,7 +11,6 @@
   // Centering
   @include flex(column, flex-start);
   background-color: var(--secondaryColor);
-  // border: $formBorder;
   box-shadow: $secondBoxShadow;
   z-index: 10;
 
@@ -33,6 +32,7 @@
     width: 100%;
     padding: $largeSpacing;
     font-weight: bold;
+    color: var(--bgc);
   }
 
   & > .buttons {

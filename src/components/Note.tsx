@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 import { ETodoStatus, ITodo } from "../interfaces/ITodo";
-import { changeStatus, deleteTodo, setSelectedTodo } from "../store/TodosSlice";
+import { changeStatus, setSelectedTodo } from "../store/TodosSlice";
 import { EMessageboxResult, showMessageBox } from "../store/uiSlice";
 
 import { Checkbox } from "./Checkbox";
@@ -66,7 +66,6 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         className={classes.note}
         style={{ background: color || "var(--bgc)" }}
       >
-        {/* <Draggable handle="#note__header"> */}
         <div
           id={classes["note__header"]}
           style={{ backgroundColor: color || "var(--bgc)" }}
@@ -80,7 +79,6 @@ export const Note: React.FunctionComponent<INoteProps> = ({
         <p className={`${status === ETodoStatus.done ? classes.done : null}`}>
           {name}
         </p>
-        {/* </Draggable> */}
       </section>
     </CSSTransition>
   );

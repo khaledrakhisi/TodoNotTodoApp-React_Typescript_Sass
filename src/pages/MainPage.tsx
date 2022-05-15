@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Backdrop } from "../components/Backdrop";
@@ -17,7 +17,7 @@ import {
 import classes from "./MainPage.module.scss";
 
 export const MainPage = () => {
-  const { isLoading, error, todos, selectedTodo } = useSelector(selectTodos);
+  const { todos, selectedTodo } = useSelector(selectTodos);
   const { searchPhrase } = useSelector(selectInputs);
   const { visible, result } = useSelector(selectMessagebox);
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const MainPage = () => {
         dispatch(deleteTodo(selectedTodo.id));
       }
     }
-  }, [result, dispatch]);
+  }, [result, dispatch, selectedTodo]);
 
   return (
     <section className={classes.mainPage}>
