@@ -12,7 +12,7 @@ import {
 import store from "../../store/store";
 import { MainPage } from "../MainPage";
 
-const MockApp = () => {
+const MockMainPage = () => {
   window.scrollTo = jest.fn();
   return (
     <BrowserRouter>
@@ -26,7 +26,7 @@ const MockApp = () => {
 describe("Todo CRUD functionality", () => {
   let list: HTMLElement | null = null;
   let textbox: HTMLElement | null = null;
-  let addButton: HTMLElement | null = null;
+  let addButton: HTMLElement | undefined = undefined;
   beforeEach(() => {
     /**
      *
@@ -34,7 +34,7 @@ describe("Todo CRUD functionality", () => {
      *
      */
 
-    const { getAllByRole, getByRole } = render(<MockApp />);
+    const { getAllByRole, getByRole } = render(<MockMainPage />);
 
     // Step 0: Targeting the List
     list = getByRole("list");
@@ -60,7 +60,7 @@ describe("Todo CRUD functionality", () => {
     // Step 5: Clicking on Add Button
     fireEvent.click(addButton!);
 
-    // Step 6: Checking list items total after adding
+    // Step 6: Targeting list items total after adding
     const { getAllByRole } = within(list!);
     const listItems = getAllByRole("listitem");
 
@@ -121,7 +121,7 @@ describe("Todo CRUD functionality", () => {
     // Step 5: Clicking on Add Button
     fireEvent.click(addButton!);
 
-    // Step 6: Checking list items total after adding
+    // Step 6: Targeting list items total after adding
     const { getAllByRole } = within(list!);
     let listItems = getAllByRole("listitem");
 
