@@ -66,6 +66,7 @@ export const CreateArea = () => {
         isCreateAreaExpanded && classes.createNote__expanded
       }`}
       onSubmit={formSubmitHandle}
+      data-testid="createarea"
     >
       {isLoading && <LoadingSpinner asOverlay />}
 
