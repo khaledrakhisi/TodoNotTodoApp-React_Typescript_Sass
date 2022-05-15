@@ -51,7 +51,7 @@ export const Note: React.FunctionComponent<INoteProps> = ({
   }, [dispatch, todo]);
 
   return (
-    <section
+    <li
       className={classes.note}
       style={{ background: todo.color || "var(--bgc)" }}
     >
@@ -70,6 +70,6 @@ export const Note: React.FunctionComponent<INoteProps> = ({
       >
         {todo.name}
       </p>
-    </section>
+    </li>
   );
 };

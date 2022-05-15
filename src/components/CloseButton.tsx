@@ -13,7 +13,7 @@ export const CloseButton: React.FunctionComponent<ICloseButtonProps> = ({
 }) => {
   return (
     <button
-      name="closeButton"
+      id="closeButton"
       className={classes.closeButton}
       onClick={(e) => onClickHandle(e)}
     >

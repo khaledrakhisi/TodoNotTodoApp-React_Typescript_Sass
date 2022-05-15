@@ -80,13 +80,14 @@ export const CreateArea = () => {
       />
 
       <button
+        id="guessTitle"
         type="button"
         onClick={randomTitleButtonCLickHandler}
         className={`${isCreateAreaExpanded && classes.expanded}`}
       >
         ?
       </button>
-      <button type="submit" disabled={todoTitle ? false : true}>
+      <button id="addTodo" type="submit" disabled={todoTitle ? false : true}>
         +
       </button>
     </form>

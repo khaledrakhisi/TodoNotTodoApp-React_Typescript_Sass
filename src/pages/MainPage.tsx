@@ -54,7 +54,7 @@ export const MainPage = () => {
       />
       <Messagebox />
 
-      <div className={classes.notes}>
+      <ul className={classes.notes}>
         {todos &&
           todos
             .filter((todo) =>
@@ -67,7 +67,7 @@ export const MainPage = () => {
                 <Note key={todo.id} todo={todo} onClickHandle={() => {}} />
               );
             })}
-      </div>
+      </ul>
     </section>
   );
 };
